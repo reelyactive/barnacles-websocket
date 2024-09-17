@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+
+// setup barnacles-websocket
+const BarnaclesWebsocket = require("../lib/barnacleswebsocket.js");
+
+const BARNACLES_WEBSOCKET_OPTIONS = {
+  printErrors: false,
+  ACCESS_TOKEN: process.env.ACCESS_TOKEN,
+};
+
+let BarnaclesWebSocket = new BarnaclesWebsocket(BARNACLES_WEBSOCKET_OPTIONS);
+
+const INTERVAL_MILLISECONDS = process.env.INTERVAL_MILLISECONDS || 5000;
+setInterval(generateDynamb, INTERVAL_MILLISECONDS);
+
+console.info(
+  "barnacles-websocket with simulated data every",
+  INTERVAL_MILLISECONDS,
+  "ms"
+);
+
+/**
+ * Generate a random dynamb event and send it to a barnacles module
+ */
+function generateDynamb() {
+  let dynamb = {
+    deviceId: "fee150bada55",
+    deviceIdType: 3,
+    isContactDetected: [Math.random() < 0.1 ? false : true],
+    isMotionDetected: [Math.random() < 0.1 ? true : false],
+    timestamp: Date.now(),
+  };
+
+  BarnaclesWebSocket.handleEvent("dynamb", dynamb);
+}

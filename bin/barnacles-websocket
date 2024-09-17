@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
-const BarnaclesWebSocket = require('../lib/barnacleswebsocket.js');
+const BarnaclesWebSocket = require("../lib/barnacleswebsocket.js");
 
+const BARNACLES_WEBSOCKET_OPTIONS = {
+  printErrors: true,
+};
 
-let barnaclesWebSocket = new BarnaclesWebSocket({ printErrors: true });
+let barnaclesWebSocket = new BarnaclesWebSocket(BARNACLES_WEBSOCKET_OPTIONS);
 
-
-console.log('barnacles-websocket instantiation test');
+console.log("barnacles-websocket instantiation test");
