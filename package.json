@@ -33,6 +33,11 @@
   "contributors": [
     {
       "name": "Jeffrey Dungen"
+    },
+    {
+      "name": "James Eberhardt",
+      "email": "james@reelyactive.com",
+      "url": "https://github.com/jeberhardt"
     }
   ],
   "license": "MIT"
